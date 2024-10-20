@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,14 +19,71 @@ public class ShoppingCart : MonoBehaviour
 
     private void Add(SetItemProducts productsGetBtutton)
     {
-        products.Add(new ProductData
+        // Тут просто создадим первый элемент
+        if(products.Count == 0)
         {
-            productsData = productsGetBtutton.products,
-            productsPriceData = productsGetBtutton.products.priceProducts,
-            langProducts = productsGetBtutton.products.nameProducts
-        }) ;
+            products.Add(new ProductData
+            {
+                productsData = productsGetBtutton.products,
+                productsPriceData = productsGetBtutton.products.priceProducts,
+                nameProducts = productsGetBtutton.products.nameProducts,
+                productsValueData = productsGetBtutton.products.valueProducts,
+            });
+            addShoppingCart.UICreateAddItem(products.Last());
+        }// тут уже будем проверять на схожесть
+        else if(products.Count > 0)
+        {
+            for (int i = 0; i < products.Count; i++)
+            {
+                if (productsGetBtutton.products.nameProducts == products[i].nameProducts)
+                {
+                    products[i].productsPriceData += productsGetBtutton.products.priceProducts;
+                    products[i].productsValueData += productsGetBtutton.products.valueProducts;
+                    addShoppingCart.UIUpdateItem(products[i]);
+                }
+                else
+                {
+                    Debug.Log("Это что-то новое");
+                }
+            }
+        } 
+    }
 
-        addShoppingCart.UIAddItem();
+    /// <summary>
+    /// Удаляет нужный 1 эелемент
+    /// </summary>
+    public void ClearUIItem(Products _products, GameObject ItemCart)
+    {
+        for (int i = 0; i < products.Count; i++)
+        {
+            if (products[i].nameProducts == _products.nameProducts)
+            {
+                if(products[i].productsValueData > _products.valueProducts)
+                {
+                    products[i].productsValueData -= _products.valueProducts;
+                    products[i].productsPriceData -= _products.priceProducts;
+
+                    addShoppingCart.UIUpdateItem(products[i]);
+                }
+                else
+                {
+                    Destroy(ItemCart);
+
+                    // Тут нужно ещё прокинуть на удаление 
+                    // данных из инвенторя Data
+                }
+            }
+        }
+    }
+
+    private void OnEnable()
+    {
+        SelectItemCart.MinusItem += ClearUIItem;
+    }
+
+    private void OnDisable()
+    {
+        SelectItemCart.MinusItem -= ClearUIItem;
     }
 }
 
@@ -36,6 +94,8 @@ public class ProductData
     public Products productsData;
     [Header("Стоимость товара")]
     public float productsPriceData;
+    [Header("Кол-во товара")]
+    public float productsValueData;
     [Header("Название на разных языках")]
-    public lang langProducts;
+    public string nameProducts;
 }

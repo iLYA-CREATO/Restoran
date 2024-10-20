@@ -5,7 +5,7 @@ using UnityEngine;
 public class Products : ScriptableObject
 {
     [Header("Название товара")]
-    public lang nameProducts;
+    public string nameProducts;
 
     [Header("Стоимость товара")]
     public float priceProducts;
@@ -14,7 +14,7 @@ public class Products : ScriptableObject
     public float valueProducts;
 }
 
-[Serializable]
+/*[Serializable]
 public class lang
 {
     [Header("Русский")]
@@ -23,4 +23,4 @@ public class lang
     public string nameProductsEng;
     [Header("Турецкий")]
     public string nameProductsTur;
-}
+}*/

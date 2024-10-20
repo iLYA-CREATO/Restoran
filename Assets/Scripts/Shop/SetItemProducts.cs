@@ -1,4 +1,6 @@
+using System;
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class SetItemProducts : MonoBehaviour
@@ -13,7 +15,9 @@ public class SetItemProducts : MonoBehaviour
     private TextMeshProUGUI textPriceTovar;
     private void Start()
     {
-        textNameTovar.text = products.nameProducts.nameProductsRus;
+        textNameTovar.text = products.nameProducts;
         textPriceTovar.text = products.priceProducts.ToString();
     }
+
+
 }
