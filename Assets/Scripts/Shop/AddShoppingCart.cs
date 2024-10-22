@@ -30,7 +30,7 @@ public class AddShoppingCart : MonoBehaviour
         buferCreate.productsItem = products.productsData;
         buferCreate.textName.text = products.nameProducts;
         buferCreate.textPrice.text = products.productsPriceData.ToString();
-        buferCreate.textValue.text = products.productsValueData.ToString();
+        buferCreate.textValueBoxes.text = products.productsValueBoxesData.ToString();
     }
     /// <summary>
     /// Метод для обнавление визуальных данных
@@ -47,6 +47,7 @@ public class AddShoppingCart : MonoBehaviour
                 spawnList[i].textName.text = products.nameProducts;
                 spawnList[i].textPrice.text = products.productsPriceData.ToString();
                 spawnList[i].textValue.text = products.productsValueData.ToString();
+                spawnList[i].textValueBoxes.text = products.productsValueBoxesData.ToString();
             }
         }
     }

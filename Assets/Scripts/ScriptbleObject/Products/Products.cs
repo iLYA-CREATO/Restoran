@@ -12,6 +12,12 @@ public class Products : ScriptableObject
 
     [Header("Кол-во при покупке товара")]
     public float valueProducts;
+
+    [Header("Кол-во коробок")]
+    public int valueProductsBoxes = 1;
+
+    [Header("Иконка продукта")]
+    public Sprite iconProduct;
 }
 
 /*[Serializable]

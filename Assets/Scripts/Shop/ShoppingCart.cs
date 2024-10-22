@@ -17,36 +17,56 @@ public class ShoppingCart : MonoBehaviour
         Add(productsGetBtutton);
     }
 
-    private void Add(SetItemProducts productsGetBtutton)
+    private void Add(SetItemProducts productsGetButton)
     {
-        // Тут просто создадим первый элемент
-        if(products.Count == 0)
+        // Проверяем, есть ли продукты в корзине
+        if (products.Count == 0)
         {
-            products.Add(new ProductData
-            {
-                productsData = productsGetBtutton.products,
-                productsPriceData = productsGetBtutton.products.priceProducts,
-                nameProducts = productsGetBtutton.products.nameProducts,
-                productsValueData = productsGetBtutton.products.valueProducts,
-            });
-            addShoppingCart.UICreateAddItem(products.Last());
-        }// тут уже будем проверять на схожесть
-        else if(products.Count > 0)
+            // Добавляем первый продукт в корзину
+            AddNewProduct(productsGetButton);
+        }
+        else
         {
+            // Переменная для отслеживания существующего продукта
+            bool productExists = false;
+
+            // Проверяем существующие продукты в корзине
             for (int i = 0; i < products.Count; i++)
             {
-                if (productsGetBtutton.products.nameProducts == products[i].nameProducts)
+                if (productsGetButton.products.nameProducts == products[i].nameProducts)
                 {
-                    products[i].productsPriceData += productsGetBtutton.products.priceProducts;
-                    products[i].productsValueData += productsGetBtutton.products.valueProducts;
+                    // Если продукт существует, обновляем его данные
+                    products[i].productsPriceData += productsGetButton.products.priceProducts;
+                    products[i].productsValueData += productsGetButton.products.valueProducts;
+                    products[i].productsValueBoxesData += 1;
                     addShoppingCart.UIUpdateItem(products[i]);
-                }
-                else
-                {
-                    Debug.Log("Это что-то новое");
+                    productExists = true;
+                    break; // Выходим из цикла, т.к. продукт найден
                 }
             }
-        } 
+
+            // Если продукт не найден, добавляем его как новый
+            if (!productExists)
+            {
+                Debug.Log("Добавляем новый продукт");
+                AddNewProduct(productsGetButton);
+            }
+        }
+    }
+
+    // Метод для добавления нового продукта
+    private void AddNewProduct(SetItemProducts productsGetButton)
+    {
+        products.Add(new ProductData
+        {
+            productsData = productsGetButton.products,
+            productsPriceData = productsGetButton.products.priceProducts,
+            nameProducts = productsGetButton.products.nameProducts,
+            productsValueData = productsGetButton.products.valueProducts,
+            productsValueBoxesData = productsGetButton.products.valueProductsBoxes
+        });
+
+        addShoppingCart.UICreateAddItem(products.Last());
     }
 
     /// <summary>
@@ -58,11 +78,11 @@ public class ShoppingCart : MonoBehaviour
         {
             if (products[i].nameProducts == _products.nameProducts)
             {
-                if(products[i].productsValueData > _products.valueProducts)
+                if(products[i].productsValueBoxesData >= 1)
                 {
                     products[i].productsValueData -= _products.valueProducts;
                     products[i].productsPriceData -= _products.priceProducts;
-
+                    products[i].productsValueBoxesData -= 1;
                     addShoppingCart.UIUpdateItem(products[i]);
                 }
                 else
@@ -91,11 +111,16 @@ public class ShoppingCart : MonoBehaviour
 public class ProductData
 {
     [Header("Ссылка на товар")]
+    // Очент полезно так как буду тут брать инфу
     public Products productsData;
     [Header("Стоимость товара")]
     public float productsPriceData;
     [Header("Кол-во товара")]
     public float productsValueData;
+
     [Header("Название на разных языках")]
     public string nameProducts;
+
+    [Header("Кол-во коробок")]
+    public int productsValueBoxesData;
 }

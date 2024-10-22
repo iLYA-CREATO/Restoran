@@ -20,6 +20,9 @@ public class SelectItemCart : MonoBehaviour
     [Header("Текст кол-во")]
     public TextMeshProUGUI textValue;
 
+    [Header("Текст кол-во")]
+    public TextMeshProUGUI textValueBoxes;
+
     [Header("Кнопка действия")]
     public Products productsItem;
 

@@ -1,8 +1,11 @@
-using System;
 using TMPro;
-using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.UI;
 
+
+/// <summary>
+/// Скрипт для заполнения данными карточкув магазине
+/// </summary>
 public class SetItemProducts : MonoBehaviour
 {
     public Products products;
@@ -13,11 +16,13 @@ public class SetItemProducts : MonoBehaviour
     [SerializeField]
     [Header("Текст стоимости")]
     private TextMeshProUGUI textPriceTovar;
+    [SerializeField]
+    [Header("Иконка товара")]
+    private Image iconTovarShop;
     private void Start()
     {
         textNameTovar.text = products.nameProducts;
         textPriceTovar.text = products.priceProducts.ToString();
+        iconTovarShop.sprite = products.iconProduct;
     }
-
-
 }
