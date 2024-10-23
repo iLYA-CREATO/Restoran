@@ -21,9 +21,16 @@ public class BoxProduct : Tovar
     private void SetData()
     {
         nameTovar = productsSO.nameProducts;
+
         priceTovar = productsSO.priceProducts;
-        stackValue = productsSO.valueProducts;
+
+        // Берем стартовое кол-во из префаба
+        stackValue = productsSO.valueProductsStack;
+
         iconTovarLeft.sprite = productsSO.iconProduct;
         iconTovarRight.sprite = productsSO.iconProduct;
+
+        // заполняем кол-во товара в коробки при покупки
+        value = stackValue;
     }
 }

@@ -11,6 +11,9 @@ public class Products : ScriptableObject
     public float priceProducts;
 
     [Header("Кол-во при покупке товара")]
+    public float valueProductsStack;
+
+    [Header("Просто кол-во товара")]
     public float valueProducts;
 
     [Header("Кол-во коробок")]

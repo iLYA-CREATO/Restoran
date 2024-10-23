@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8869064288339523419}
   - component: {fileID: 3315379148279828475}
   - component: {fileID: 6828796728298526813}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: IconRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5655658955653384950}
   - component: {fileID: 2377395528248054978}
   - component: {fileID: 2772221609089133406}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 4132776392224419797}
   - component: {fileID: 4284700828678843068}
   - component: {fileID: 2567036439945721643}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: IconLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,9 +267,9 @@ GameObject:
   - component: {fileID: 5193493414420145068}
   - component: {fileID: 5173260043708093636}
   - component: {fileID: -3241043389477758657}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CardBoardBox
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,5 +406,6 @@ MonoBehaviour:
   nameTovar: 
   stackValue: 0
   priceTovar: 0
+  productsSO: {fileID: 0}
   iconTovarLeft: {fileID: 2567036439945721643}
   iconTovarRight: {fileID: 6828796728298526813}

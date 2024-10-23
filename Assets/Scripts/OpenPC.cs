@@ -28,14 +28,17 @@ public class OpenPC : MonoBehaviour
         AllRaycast.OnRaycast -= RayOpenPC;
     }
 
-    private void RayOpenPC()
+    private void RayOpenPC(string tag)
     {
-        if (Input.GetKeyDown(keyManager.PressAction))
+        if (tag == "PC")
         {
-            isOpenPC = true;
-            PcPanel.SetActive(isOpenPC);
-            
-            ParametrPlayer(isOpenPC);
+            if (Input.GetKeyDown(keyManager.PressAction))
+            {
+                isOpenPC = true;
+                PcPanel.SetActive(isOpenPC);
+
+                ParametrPlayer(isOpenPC);
+            }
         }
     }
     /// <summary>
