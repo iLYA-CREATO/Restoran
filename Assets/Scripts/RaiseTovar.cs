@@ -1,5 +1,10 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
+
+/// <summary>
+/// Скрипт отчвечает за подбор предметов
+/// </summary>
 public class RaiseTovar : MonoBehaviour
 {
     [SerializeField]
@@ -13,6 +18,8 @@ public class RaiseTovar : MonoBehaviour
     [Header("Поднят ли предмет")]
     private bool isTake;
 
+
+    private GameObject raiseObject;
     private void OnEnable()
     {
         AllRaycast.OnRaycastTovar += OnRaise;
@@ -22,7 +29,6 @@ public class RaiseTovar : MonoBehaviour
     {
         AllRaycast.OnRaycastTovar -= OnRaise;
     }
-
     private void OnRaise(bool isRay, GameObject rayObject, string tag)
     {
         if(isRay && tag == "Box")
@@ -30,21 +36,20 @@ public class RaiseTovar : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 isTake = !isTake;
+                raiseObject = rayObject;
 
                 if (isTake == true)
                 {
-                    rayObject.transform.parent = raisPosition;
-                    rayObject.transform.position = raisPosition.transform.position;
+                    raiseObject.transform.parent = raisPosition;
+                    raiseObject.transform.position = raisPosition.transform.position;
                 }
                 else
                 {
-                    rayObject.transform.parent = spawnPosition;
+                    raiseObject.transform.parent = spawnPosition;
                 }
-                rayObject.GetComponent<Rigidbody>().useGravity = !isTake;
-                rayObject.GetComponent<Rigidbody>().isKinematic = isTake;
 
-                
-                Debug.Log(rayObject.name);
+                raiseObject.GetComponent<Rigidbody>().useGravity = !isTake;
+                raiseObject.GetComponent<Rigidbody>().isKinematic = isTake;
             }
         }
     }

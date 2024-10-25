@@ -22,14 +22,3 @@ public class Products : ScriptableObject
     [Header("Иконка продукта")]
     public Sprite iconProduct;
 }
-
-/*[Serializable]
-public class lang
-{
-    [Header("Русский")]
-    public string nameProductsRus;
-    [Header("Английский")]
-    public string nameProductsEng;
-    [Header("Турецкий")]
-    public string nameProductsTur;
-}*/

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30ba68b7a1f2ec48a7b03db67d32d53, type: 3}
+  m_Name: Olives
+  m_EditorClassIdentifier: 
+  nameProducts: "\u0427\u0451\u0440\u043D\u044B\u0435 \u043E\u043B\u0438\u0432\u043A\u0438"
+  priceProducts: 30
+  valueProductsStack: 30
+  valueProducts: 30
+  valueProductsBoxes: 1
+  iconProduct: {fileID: 21300000, guid: def78c272abb2a24781fd05c97948187, type: 3}

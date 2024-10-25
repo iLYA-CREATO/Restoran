@@ -63,6 +63,7 @@ public class ShoppingCart : MonoBehaviour
             productsPriceData = productsGetButton.products.priceProducts,
             nameProducts = productsGetButton.products.nameProducts,
             productsValueData = productsGetButton.products.valueProducts,
+            productsValueStackData = productsGetButton.products.valueProductsStack,
             productsValueBoxesData = productsGetButton.products.valueProductsBoxes
         });
 
@@ -72,13 +73,13 @@ public class ShoppingCart : MonoBehaviour
     /// <summary>
     /// Удаляет нужный 1 эелемент
     /// </summary>
-    public void ClearUIItem(Products _products, GameObject ItemCart)
+    public void ClearItem(Products _products, GameObject ItemCart)
     {
         for (int i = 0; i < products.Count; i++)
         {
             if (products[i].nameProducts == _products.nameProducts)
             {
-                if(products[i].productsValueBoxesData >= 1)
+                if(products[i].productsValueBoxesData > 1)
                 {
                     products[i].productsValueData -= _products.valueProducts;
                     products[i].productsPriceData -= _products.priceProducts;
@@ -88,7 +89,7 @@ public class ShoppingCart : MonoBehaviour
                 else
                 {
                     Destroy(ItemCart);
-
+                    products.Remove(products[i]);
                     // Тут нужно ещё прокинуть на удаление 
                     // данных из инвенторя Data
                 }
@@ -98,12 +99,12 @@ public class ShoppingCart : MonoBehaviour
 
     private void OnEnable()
     {
-        SelectItemCart.MinusItem += ClearUIItem;
+        SelectItemCart.MinusItem += ClearItem;
     }
 
     private void OnDisable()
     {
-        SelectItemCart.MinusItem -= ClearUIItem;
+        SelectItemCart.MinusItem -= ClearItem;
     }
 }
 
@@ -111,16 +112,15 @@ public class ShoppingCart : MonoBehaviour
 public class ProductData
 {
     [Header("Ссылка на товар")]
-    // Очент полезно так как буду тут брать инфу
     public Products productsData;
     [Header("Стоимость товара")]
     public float productsPriceData;
     [Header("Кол-во товара")]
     public float productsValueData;
-
+    [Header("Кол-во товара")]
+    public float productsValueStackData;
     [Header("Название на разных языках")]
     public string nameProducts;
-
     [Header("Кол-во коробок")]
     public int productsValueBoxesData;
 }

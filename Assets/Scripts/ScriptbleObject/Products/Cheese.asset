@@ -15,6 +15,6 @@ MonoBehaviour:
   nameProducts: "\u0421\u044B\u0440"
   priceProducts: 24
   valueProductsStack: 12
-  valueProducts: 0
+  valueProducts: 12
   valueProductsBoxes: 1
   iconProduct: {fileID: 21300000, guid: be60a3f9f869da04189fa23b4277b7f9, type: 3}
