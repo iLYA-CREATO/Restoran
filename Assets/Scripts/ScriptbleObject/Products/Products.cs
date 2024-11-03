@@ -21,4 +21,7 @@ public class Products : ScriptableObject
 
     [Header("Иконка продукта")]
     public Sprite iconProduct;
+
+    [Header("Продукция которая не находится в пластике")]
+    public bool NotPackage;
 }

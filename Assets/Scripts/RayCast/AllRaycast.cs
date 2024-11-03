@@ -5,6 +5,7 @@ using UnityEngine;
 public class AllRaycast : MonoBehaviour
 {
     public static event Action<string> OnRaycast;
+    public static event Action<string, GameObject> OnRaycastFridge;
     public static event Action<bool, GameObject, string> OnRaycastTovar;
     [SerializeField]
     private GameObject ImageAction;// Картинка с действием
@@ -37,6 +38,8 @@ public class AllRaycast : MonoBehaviour
                 }
                 ImageAction.SetActive(true);// Активируем подсказку для игрока
                 OnRaycast?.Invoke(hit.collider.tag);
+                OnRaycastFridge?.Invoke(hit.collider.tag, hit.collider.gameObject);
+
                 OnRaycastTovar?.Invoke(true, hit.collider.gameObject, hit.collider.tag);
             }
         }
@@ -44,7 +47,7 @@ public class AllRaycast : MonoBehaviour
         {
             ImageAction.SetActive(false);
             TextValueBox.SetActive(false);
-            OnRaycastTovar?.Invoke(false, null, "");
+            //OnRaycastTovar?.Invoke(false, null, "");
         }
     }
 }
