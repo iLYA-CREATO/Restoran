@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 5193493414420145068}
   - component: {fileID: 5173260043708093636}
   - component: {fileID: -3241043389477758657}
+  - component: {fileID: -5762625061804841025}
   m_Layer: 3
   m_Name: CardBoardBox
   m_TagString: Box
@@ -405,7 +406,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameTovar: 
   stackValue: 0
+  value: 0
   priceTovar: 0
   productsSO: {fileID: 0}
   iconTovarLeft: {fileID: 2567036439945721643}
   iconTovarRight: {fileID: 6828796728298526813}
+--- !u!114 &-5762625061804841025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7529432114566755168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e70877163eedf9408318f91c7060e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTrigBox: 0

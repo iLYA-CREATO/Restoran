@@ -5,7 +5,12 @@ using UnityEngine;
 public class AllRaycast : MonoBehaviour
 {
     public static event Action<string> OnRaycast;
-    public static event Action<string, GameObject> OnRaycastFridge;
+
+    /// <summary>
+    /// ќн обрабатывает обычные действи€ например холодильник или мусорка
+    /// </summary>
+    public static event Action<string, GameObject> OnRaycastAction;
+
     public static event Action<bool, GameObject, string> OnRaycastTovar;
     [SerializeField]
     private GameObject ImageAction;//  артинка с действием
@@ -36,9 +41,10 @@ public class AllRaycast : MonoBehaviour
 
                     textBox.text = boxProduct.stackValue + "/" + boxProduct.value;
                 }
+
                 ImageAction.SetActive(true);// јктивируем подсказку дл€ игрока
                 OnRaycast?.Invoke(hit.collider.tag);
-                OnRaycastFridge?.Invoke(hit.collider.tag, hit.collider.gameObject);
+                OnRaycastAction?.Invoke(hit.collider.tag, hit.collider.gameObject);
 
                 OnRaycastTovar?.Invoke(true, hit.collider.gameObject, hit.collider.tag);
             }

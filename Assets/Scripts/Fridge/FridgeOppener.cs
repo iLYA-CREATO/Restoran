@@ -5,12 +5,12 @@ public class FridgeOppener : MonoBehaviour
 {
     private void OnEnable()
     {
-        AllRaycast.OnRaycastFridge += OpenClouse;
+        AllRaycast.OnRaycastAction += OpenClouse;
 
     }
     private void OnDisable()
     {
-        AllRaycast.OnRaycastFridge -= OpenClouse;
+        AllRaycast.OnRaycastAction -= OpenClouse;
     }
 
     private void OpenClouse(string tag, GameObject Door)
